@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧮 MATH GENIUS - FPB & KPK untuk Anak Sekolah</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #4ECDC4;
+            --accent: #FFE66D;
+            --success: #95E1D3;
+            --danger: #FF6B9D;
+            --info: #A8E6CF;
+            --warning: #FFD93D;
+            --dark: #2C3E50;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', cursive, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* ============ NAVBAR ============ */
+        .navbar-custom {
+            background: linear-gradient(90deg, #FF6B6B, #4ECDC4);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            padding: 15px 20px;
+        }
+
+        .navbar-brand {
+            font-size: 28px;
+            font-weight: 900;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .nav-link {
+            color: white !important;
+            font-weight: 700;
+            font-size: 16px;
+            margin: 0 8px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            transform: scale(1.1);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        .nav-link.active {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 8px 20px;
+        }
+
+        /* ============ HERO SECTION ============ */
+        .hero-section {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 50%, #4ECDC4 100%);
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-section::after {
+            content: "";
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            bottom: -50px;
+            left: -50px;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
+        .hero-title {
+            font-size: 60px;
+            font-weight: 900;
+            color: white;
+            text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            color: white;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .mascot {
+            font-size: 100px;
+            position: relative;
+            z-index: 1;
+            animation: wiggle 1s infinite;
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            75% { transform: rotate(-5deg); }
+        }
+
+        .btn-menu {
+            background: white;
+            color: var(--primary);
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 30px;
+            margin: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+        }
+
+        .btn-menu:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-menu:active {
+            transform: scale(0.95);
+        }
+
+        /* ============ SECTION ============ */
+        .section {
+            display: none;
+            padding: 50px 20px;
+            background: white;
+            min-height: 100vh;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 45px;
+            font-weight: 900;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 0 var(--accent);
+        }
+
+        .section-subtitle {
+            font-size: 28px;
+            color: var(--secondary);
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .content-box {
+            background: linear-gradient(135deg, #F8F9FF 0%, #E8F5FF 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            border: 3px solid var(--secondary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-box p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--dark);
+        }
+
+        .content-box strong {
+            color: var(--primary);
+            font-size: 20px;
+        }
+
+        .example-box {
+            background: var(--accent);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 5px solid var(--primary);
+            font-size: 18px;
+        }
+
+        /* ============ PETUNJUK ============ */
+        .petunjuk-item {
+            background: linear-gradient(135deg, #FFE66D 0%, #FFC93C 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 15px 0;
+            border: 3px solid var(--dark);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .petunjuk-item .number {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 24px;
+            font-weight: 900;
+            margin-right: 15px;
+        }
+
+        .petunjuk-item p {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        /* ============ TAB MATERI ============ */
+        .tab-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tab-btn {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .tab-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #4ECDC4 0%, #3DB8B0 100%);
+            box-shadow: 0 0 20px rgba(78, 205, 196, 0.5);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* ============ POHON FAKTOR ============ */
+        .factor-tree {
+            background: var(--info);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            text-align: center;
+            border: 3px dashed var(--primary);
+        }
+
+        .factor-tree-item {
+            display: inline-block;
+            background: white;
+            border: 3px solid var(--primary);
+            border-radius: 12px;
+            padding: 12px 20px;
+            margin: 8px;
+            font-weight: 700;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .factor-tree-item:hover {
+            background: var(--accent);
+            transform: scale(1.1);
+        }
+
+        /* ============ KUIS ============ */
+        .quiz-container {
+            background: linear-gradient(135deg, #FFE66D 0%, #FFC93C 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 25px 0;
+            border: 3px solid var(--dark);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .quiz-question {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .quiz-options {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .quiz-option {
+            background: white;
+            border: 3px solid var(--dark);
+            border-radius: 15px;
+            padding: 20px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .quiz-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .quiz-option.selected {
+            background: var(--secondary);
+            border-color: var(--secondary);
+        }
+
+        .quiz-option.correct {
+            background: var(--success);
+            border-color: var(--success);
+            animation: pulse 0.5s ease;
+        }
+
+        .quiz-option.incorrect {
+            background: var(--danger);
+            border-color: var(--danger);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .quiz-feedback {
+            font-size: 20px;
+            font-weight: 700;
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 10px;
+            display: none;
+            text-align: center;
+        }
+
+        .quiz-feedback.show {
+            display: block;
+        }
+
+        .quiz-feedback.correct {
+            background: var(--success);
+            color: white;
+        }
+
+        .quiz-feedback.incorrect {
+            background: var(--danger);
+            color: white;
+        }
+
+        /* ============ SCORE ============ */
+        .score-display {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--danger) 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .star {
+            display: inline-block;
+            color: var(--warning);
+            font-size: 30px;
+            margin: 0 5px;
+            animation: twinkle 1s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* ============ WORDWALL ============ */
+        .wordwall-container {
+            background: linear-gradient(135deg, #FFE66D 0%, #FFC93C 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 25px 0;
+            border: 3px solid var(--dark);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .wordwall-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .wordwall-iframe {
+            width: 100%;
+            height: 600px;
+            border: 3px solid var(--dark);
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .wordwall-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--danger) 100%);
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 20px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .wordwall-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+            color: white;
+        }
+
+        /* ============ PROFIL ============ */
+        .profile-card {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 50%, #4ECDC4 100%);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin: 30px 0;
+        }
+
+        .profile-name {
+            font-size: 32px;
+            font-weight: 900;
+            color: white;
+            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+        }
+
+        .profile-info {
+            font-size: 18px;
+            color: white;
+            margin: 10px 0;
+            line-height: 1.8;
+        }
+
+        /* ============ FOOTER ============ */
+        .footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 16px;
+        }
+
+        /* ============ RESPONSIF ============ */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 40px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .nav-link {
+                font-size: 14px;
+                margin: 5px 0;
+            }
+
+            .tab-buttons {
+                gap: 10px;
+            }
+
+            .tab-btn {
+                padding: 12px 20px;
+                font-size: 16px;
+            }
+
+            .wordwall-iframe {
+                height: 400px;
+            }
+        }
+
+        /* ============ BADGE & REWARD ============ */
+        .badge-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .badge {
+            text-align: center;
+            animation: scaleIn 0.5s ease-out;
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .badge-icon {
+            font-size: 80px;
+            margin-bottom: 10px;
+        }
+
+        .badge-text {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* ============ LOADING ============ */
+        .loading {
+            text-align: center;
+            font-size: 20px;
+            color: var(--primary);
+            margin: 30px 0;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--secondary);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- ============ NAVBAR ============ -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container-fluid">
+            <span class="navbar-brand">🧮 MATH GENIUS</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="showSection('hero')">🏠 Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="showSection('petunjuk')">📖 Petunjuk</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="showSection('materi')">📚 Materi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="showSection('kuis')">🎮 Kuis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="showSection('profil')">👤 Profil</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============ HERO SECTION ============ -->
+    <div id="hero" class="section hero-section active">
+        <div class="mascot">🎓</div>
+        <h1 class="hero-title">MATH GENIUS</h1>
+        <p class="hero-subtitle">Belajar FPB dan KPK dengan Cara yang Menyenangkan! 🌟</p>
+
+        <div style="margin-top: 40px;">
+            <button class="btn-menu" onclick="showSection('petunjuk')">📖 Petunjuk Belajar</button>
+            <button class="btn-menu" onclick="showSection('materi')">📚 Baca Materi</button>
+            <button class="btn-menu" onclick="showSection('kuis')">🎮 Mainkan Kuis</button>
+        </div>
+
+        <div class="badge-container" style="margin-top: 50px;">
+            <div class="badge">
+                <div class="badge-icon">🏆</div>
+                <div class="badge-text">Pelajar Cerdas</div>
+            </div>
+            <div class="badge">
+                <div class="badge-icon">⭐</div>
+                <div class="badge-text">Master FPB</div>
+            </div>
+            <div class="badge">
+                <div class="badge-icon">💯</div>
+                <div class="badge-text">Master KPK</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ PETUNJUK ============ -->
+    <div id="petunjuk" class="section">
+        <h2 class="section-title">📖 Petunjuk Belajar</h2>
+
+        <div class="container">
+            <div class="petunjuk-item">
+                <span class="number">1</span>
+                <p>📚 <strong>Baca Materi dengan Teliti</strong> - Pahami penjelasan tentang Faktor, Kelipatan, FPB, dan KPK secara bertahap.</p>
+            </div>
+
+            <div class="petunjuk-item">
+                <span class="number">2</span>
+                <p>💡 <strong>Perhatikan Contoh Soal</strong> - Setiap materi dilengkapi dengan contoh yang mudah dipahami.</p>
+            </div>
+
+            <div class="petunjuk-item">
+                <span class="number">3</span>
+                <p>🎮 <strong>Mainkan Kuis Latihan</strong> - Uji pemahamanmu dengan menjawab soal-soal interaktif.</p>
+            </div>
+
+            <div class="petunjuk-item">
+                <span class="number">4</span>
+                <p>🏆 <strong>Dapatkan Bintang</strong> - Semakin banyak jawaban benar, semakin banyak bintang yang kamu kumpulkan!</p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <button class="btn-menu" onclick="showSection('materi')">Lanjut ke Materi →</button>
+        </div>
+    </div>
+
+    <!-- ============ MATERI ============ -->
+    <div id="materi" class="section">
+        <h2 class="section-title">📚 Materi Pelajaran</h2>
+
+        <div class="container">
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="showTab('faktor')">1️⃣ Faktor</button>
+                <button class="tab-btn" onclick="showTab('kelipatan')">2️⃣ Kelipatan</button>
+                <button class="tab-btn" onclick="showTab('fpb')">3️⃣ FPB</button>
+                <button class="tab-btn" onclick="showTab('kpk')">4️⃣ KPK</button>
+            </div>
+
+            <!-- TAB FAKTOR -->
+            <div id="faktor" class="tab-content active">
+                <h3 class="section-subtitle">1️⃣ Apa itu FAKTOR?</h3>
+
+                <div class="content-box">
+                    <p>🎯 <strong>Faktor</strong> adalah bilangan-bilangan yang dapat membagi habis suatu bilangan tanpa sisa.</p>
+                </div>
+
+                <div class="content-box">
+                    <p><strong>📌 Contoh:</strong></p>
+                    <p>Faktor dari <strong>12</strong> adalah: <strong>1, 2, 3, 4, 6, 12</strong></p>
+                    <p>Karena:</p>
+                    <ul style="margin-top: 10px;">
+                        <li>12 ÷ 1 = 12 ✓</li>
+                        <li>12 ÷ 2 = 6 ✓</li>
+                        <li>12 ÷ 3 = 4 ✓</li>
+                        <li>12 ÷ 4 = 3 ✓</li>
+                        <li>12 ÷ 6 = 2 ✓</li>
+                        <li>12 ÷ 12 = 1 ✓</li>
+                    </ul>
+                </div>
+
+                <div class="example-box">
+                    <strong>🎮 Pohon Faktor dari 12:</strong>
+                    <div class="factor-tree">
+                        <div style="margin: 10px 0; font-size: 24px; font-weight: 700;">12</div>
+                        <div style="margin: 10px 0;">↓</div>
+                        <div>
+                            <div class="factor-tree-item">2</div>
+                            <div class="factor-tree-item">6</div>
+                        </div>
+                        <div style="margin: 10px 0;">↓</div>
+                        <div>
+                            <div class="factor-tree-item">2</div>
+                            <div class="factor-tree-item">2</div>
+                            <div class="factor-tree-item">3</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-box" style="background: var(--accent);">
+                    <p>💪 <strong>Latihan:</strong> Coba cari semua faktor dari 20!</p>
+                    <p>Jawaban: 1, 2, 4, 5, 10, 20</p>
+                </div>
+            </div>
+
+            <!-- TAB KELIPATAN -->
+            <div id="kelipatan" class="tab-content">
+                <h3 class="section-subtitle">2️⃣ Apa itu KELIPATAN?</h3>
+
+                <div class="content-box">
+                    <p>🎯 <strong>Kelipatan</strong> adalah bilangan-bilangan yang merupakan hasil perkalian suatu bilangan dengan bilangan asli.</p>
+                </div>
+
+                <div class="content-box">
+                    <p><strong>📌 Contoh:</strong></p>
+                    <p>Kelipatan dari <strong>3</strong> adalah: <strong>3, 6, 9, 12, 15, 18, 21, ...</strong></p>
+                    <p>Karena:</p>
+                    <ul style="margin-top: 10px;">
+                        <li>3 × 1 = 3</li>
+                        <li>3 × 2 = 6</li>
+                        <li>3 × 3 = 9</li>
+                        <li>3 × 4 = 12</li>
+                        <li>3 × 5 = 15</li>
+                        <li>dan seterusnya...</li>
+                    </ul>
+                </div>
+
+                <div class="example-box">
+                    <strong>🎮 Tabel Kelipatan:</strong>
+                    <table style="width: 100%; margin-top: 15px; text-align: center;">
+                        <tr>
+                            <td style="padding: 10px; background: var(--primary); color: white; border-radius: 8px;"><strong>Kelipatan 2</strong></td>
+                            <td style="padding: 10px;">2, 4, 6, 8, 10, 12, ...</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; background: var(--secondary); color: white; border-radius: 8px;"><strong>Kelipatan 3</strong></td>
+                            <td style="padding: 10px;">3, 6, 9, 12, 15, 18, ...</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; background: var(--accent); color: var(--dark); border-radius: 8px;"><strong>Kelipatan 5</strong></td>
+                            <td style="padding: 10px;">5, 10, 15, 20, 25, 30, ...</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="content-box" style="background: var(--accent);">
+                    <p>💪 <strong>Latihan:</strong> Sebutkan 5 kelipatan pertama dari 4!</p>
+                    <p>Jawaban: 4, 8, 12, 16, 20</p>
+                </div>
+            </div>
+
+            <!-- TAB FPB -->
+            <div id="fpb" class="tab-content">
+                <h3 class="section-subtitle">3️⃣ Apa itu FPB?</h3>
+
+                <div class="content-box">
+                    <p>🎯 <strong>FPB (Faktor Persekutuan Terbesar)</strong> adalah faktor terbesar yang sama dari dua bilangan atau lebih.</p>
+                </div>
+
+                <div class="content-box">
+                    <p><strong>📌 Contoh:</strong> Cari FPB dari 12 dan 18</p>
+                    <p>Faktor 12: 1, 2, 3, 4, 6, 12</p>
+                    <p>Faktor 18: 1, 2, 3, 6, 9, 18</p>
+                    <p>Faktor persekutuan: 1, 2, 3, 6</p>
+                    <p style="background: var(--warning); padding: 10px; border-radius: 8px; margin-top: 10px;">
+                        <strong>FPB = 6</strong> (faktor terbesar yang sama)
+                    </p>
+                </div>
+
+                <div class="example-box">
+                    <strong>🎮 Cara Mencari FPB dengan Pohon Faktor:</strong>
+                    <div class="factor-tree">
+                        <div style="margin: 10px 0;">
+                            <div style="font-size: 18px; font-weight: 700;">12 = 2² × 3</div>
+                            <div style="font-size: 18px; font-weight: 700; margin-top: 10px;">18 = 2 × 3²</div>
+                        </div>
+                        <div style="margin: 15px 0; color: var(--primary); font-weight: 700;">
+                            Ambil faktor yang sama dengan pangkat terkecil:
+                        </div>
+                        <div style="font-size: 20px; font-weight: 700; background: white; padding: 10px; border-radius: 8px;">
+                            FPB = 2 × 3 = 6
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-box" style="background: var(--accent);">
+                    <p>💪 <strong>Latihan:</strong> Cari FPB dari 24 dan 36!</p>
+                    <p>Jawaban: 12</p>
+                </div>
+            </div>
+
+            <!-- TAB KPK -->
+            <div id="kpk" class="tab-content">
+                <h3 class="section-subtitle">4️⃣ Apa itu KPK?</h3>
+
+                <div class="content-box">
+                    <p>🎯 <strong>KPK (Kelipatan Persekutuan Terkecil)</strong> adalah kelipatan terkecil yang sama dari dua bilangan atau lebih.</p>
+                </div>
+
+                <div class="content-box">
+                    <p><strong>📌 Contoh:</strong> Cari KPK dari 4 dan 6</p>
+                    <p>Kelipatan 4: 4, 8, 12, 16, 20, 24, ...</p>
+                    <p>Kelipatan 6: 6, 12, 18, 24, 30, ...</p>
+                    <p>Kelipatan persekutuan: 12, 24, 36, ...</p>
+                    <p style="background: var(--warning); padding: 10px; border-radius: 8px; margin-top: 10px;">
+                        <strong>KPK = 12</strong> (kelipatan terkecil yang sama)
+                    </p>
+                </div>
+
+                <div class="example-box">
+                    <strong>🎮 Cara Mencari KPK dengan Pohon Faktor:</strong>
+                    <div class="factor-tree">
+                        <div style="margin: 10px 0;">
+                            <div style="font-size: 18px; font-weight: 700;">4 = 2²</div>
+                            <div style="font-size: 18px; font-weight: 700; margin-top: 10px;">6 = 2 × 3</div>
+                        </div>
+                        <div style="margin: 15px 0; color: var(--primary); font-weight: 700;">
+                            Ambil semua faktor dengan pangkat terbesar:
+                        </div>
+                        <div style="font-size: 20px; font-weight: 700; background: white; padding: 10px; border-radius: 8px;">
+                            KPK = 2² × 3 = 12
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-box" style="background: var(--accent);">
+                    <p>💪 <strong>Latihan:</strong> Cari KPK dari 6 dan 8!</p>
+                    <p>Jawaban: 24</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <button class="btn-menu" onclick="showSection('kuis')">Sekarang Main Kuis! →</button>
+        </div>
+    </div>
+
+    <!-- ============ KUIS ============ -->
+    <div id="kuis" class="section">
+        <h2 class="section-title">🎮 Main Kuis dan Kumpulkan Bintang!</h2>
+
+        <div class="container">
+            <div class="score-display">
+                <span>Score: <span id="score">0</span>/5</span>
+                <span style="margin-left: 20px;" id="starDisplay">⭐ 0 Bintang</span>
+            </div>
+
+            <!-- KUIS SOAL -->
+            <div id="quizBasic">
+                <div id="quizContainer"></div>
+                <div style="text-align: center; margin-top: 30px;">
+                    <button class="btn-menu" onclick="resetQuiz()" style="background: var(--success); color: white; border: none;">🔄 Ulang Kuis</button>
+                </div>
+            </div>
+
+            <hr style="border: 3px dashed var(--primary); margin: 50px 0;">
+
+            <!-- WORDWALL SECTION -->
+            <h3 class="section-subtitle">🚀 Kuis Lanjutan - Wordwall Challenge!</h3>
+            <p style="font-size: 18px; text-align: center; color: var(--dark); margin-bottom: 20px;">
+                Setelah menyelesaikan kuis dasar, coba tantangan lebih seru di Wordwall! Mainkan berbagai tipe game yang seru sambil belajar FPB dan KPK.
+            </p>
+
+            <div class="wordwall-container">
+                <div class="wordwall-title">📱 Main Wordwall di Sini:</div>
+                <iframe class="wordwall-iframe" src="https://wordwall.net/play/110954/054/150" frameborder="0" allowfullscreen></iframe>
+                <a href="https://wordwall.net/play/110954/054/150" target="_blank" class="wordwall-button">
+                    🎮 Buka Wordwall di Tab Baru
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ PROFIL ============ -->
+    <div id="profil" class="section">
+        <h2 class="section-title">👤 Profil Penulis</h2>
+
+        <div class="container">
+            <div class="profile-card">
+                <div class="profile-name">Syakira Rifdatun Naifah 👩‍🎓</div>
+                <div class="profile-info">
+                    <strong>📚 Kelas:</strong> 5 SD<br>
+                    <strong>🎓 Mata Pelajaran:</strong> Matematika<br>
+                    <strong>📖 Topik:</strong> FPB dan KPK<br>
+                    <strong>🌟 Tujuan:</strong> Membuat pembelajaran lebih menyenangkan dan interaktif
+                </div>
+            </div>
+
+            <div class="content-box">
+                <h4 style="color: var(--primary); margin-bottom: 15px;">💡 Tentang Media Pembelajaran Ini:</h4>
+                <p>
+                    <strong>MATH GENIUS</strong> adalah media pembelajaran interaktif yang dirancang khusus untuk membantu siswa kelas 5 SD memahami konsep FPB (Faktor Persekutuan Terbesar) dan KPK (Kelipatan Persekutuan Terkecil) dengan cara yang menyenangkan dan mudah dipahami.
+                </p>
+                <p style="margin-top: 15px;">
+                    Media ini dilengkapi dengan:
+                </p>
+                <ul style="margin-top: 10px;">
+                    <li>📚 Penjelasan materi yang sederhana dan mudah dimengerti</li>
+                    <li>🎮 Kuis interaktif dengan feedback instan</li>
+                    <li>🎨 Desain colorful dan user-friendly</li>
+                    <li>📊 Visualisasi konsep dengan diagram pohon faktor</li>
+                    <li>🏆 Sistem gamifikasi untuk meningkatkan motivasi belajar</li>
+                </ul>
+            </div>
+
+            <div class="badge-container">
+                <div class="badge">
+                    <div class="badge-icon">🎓</div>
+                    <div class="badge-text">Pendidik</div>
+                </div>
+                <div class="badge">
+                    <div class="badge-icon">💻</div>
+                    <div class="badge-text">Inovator</div>
+                </div>
+                <div class="badge">
+                    <div class="badge-icon">🌟</div>
+                    <div class="badge-text">Inspiring</div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <button class="btn-menu" onclick="showSection('hero')">← Kembali ke Beranda</button>
+        </div>
+    </div>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+        <p>© 2026 MATH GENIUS - Media Pembelajaran Interaktif FPB & KPK</p>
+        <p>Dibuat dengan ❤️ untuk Siswa Kelas 5 SD</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let score = 0;
+        let quizAnswered = [false, false, false, false, false];
+
+        // ============ SOAL KUIS ============
+        const quizQuestions = [
+            {
+                question: "Apa saja faktor dari 15?",
+                options: ["1, 3, 5, 15", "1, 2, 5, 15", "1, 2, 3, 15", "2, 3, 5, 10"],
+                correct: 0
+            },
+            {
+                question: "Kelipatan pertama dari 7 adalah apa?",
+                options: ["7, 14, 21, 28", "1, 7, 14, 21", "7, 8, 9, 10", "0, 7, 14, 21"],
+                correct: 0
+            },
+            {
+                question: "Berapa FPB dari 12 dan 18?",
+                options: ["6", "12", "18", "3"],
+                correct: 0
+            },
+            {
+                question: "Berapa KPK dari 4 dan 5?",
+                options: ["9", "20", "10", "15"],
+                correct: 1
+            },
+            {
+                question: "FPB dari 20 dan 30 adalah?",
+                options: ["5", "10", "15", "20"],
+                correct: 1
+            }
+        ];
+
+        function initQuiz() {
+            const container = document.getElementById('quizContainer');
+            container.innerHTML = '';
+
+            quizQuestions.forEach((q, index) => {
+                const quizHTML = `
+                    <div class="quiz-container">
+                        <div class="quiz-question">
+                            <span style="color: var(--primary); font-size: 24px;">Soal ${index + 1}:</span> ${q.question}
+                        </div>
+                        <div class="quiz-options">
+                            ${q.options.map((opt, optIndex) => `
+                                <div class="quiz-option" onclick="checkAnswer(${index}, ${optIndex})">
+                                    ${opt}
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="quiz-feedback" id="feedback-${index}"></div>
+                    </div>
+                `;
+                container.innerHTML += quizHTML;
+            });
+        }
+
+        function checkAnswer(questionIndex, selectedIndex) {
+            const question = quizQuestions[questionIndex];
+            const isCorrect = selectedIndex === question.correct;
+            const feedbackEl = document.getElementById(`feedback-${questionIndex}`);
+            const options = document.querySelectorAll(`.quiz-container:nth-child(${questionIndex + 1}) .quiz-option`);
+
+            if (!quizAnswered[questionIndex]) {
+                quizAnswered[questionIndex] = true;
+
+                options.forEach((opt, idx) => {
+                    opt.style.pointerEvents = 'none';
+                    if (idx === question.correct) {
+                        opt.classList.add('correct');
+                    } else if (idx === selectedIndex && !isCorrect) {
+                        opt.classList.add('incorrect');
+                    }
+                });
+
+                if (isCorrect) {
+                    score++;
+                    feedbackEl.classList.add('show', 'correct');
+                    feedbackEl.innerHTML = '✅ BENAR! Jawaban Sempurna! 🌟';
+                } else {
+                    feedbackEl.classList.add('show', 'incorrect');
+                    feedbackEl.innerHTML = `❌ Salah! Jawaban yang benar adalah: <strong>${question.options[question.correct]}</strong>`;
+                }
+
+                updateScore();
+            }
+        }
+
+        function updateScore() {
+            document.getElementById('score').textContent = score;
+            const stars = Math.floor((score / 5) * 5);
+            let starDisplay = '⭐ '.repeat(stars) + `(${score}/5)`;
+            document.getElementById('starDisplay').textContent = starDisplay;
+        }
+
+        function resetQuiz() {
+            score = 0;
+            quizAnswered = [false, false, false, false, false];
+            updateScore();
+            initQuiz();
+            window.scrollTo(0, 0);
+        }
+
+        // ============ NAVIGASI SECTION ============
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+            event.target.classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // ============ TAB MATERI ============
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // ============ INISIALISASI ============
+        document.addEventListener('DOMContentLoaded', function() {
+            initQuiz();
+        });
+
+        // ============ SOUND EFFECT (Optional) ============
+        function playSound(soundName) {
+            try {
+                const audio = new Audio(`data/sounds/${soundName}.mp3`);
+                audio.play().catch(e => console.log('Audio tidak tersedia'));
+            } catch (e) {
+                console.log('Sound tidak dimainkan');
+            }
+        }
+
+        // Play sound saat navigasi
+        function showSectionWithSound(sectionId) {
+            playSound(`navigate-${sectionId}`);
+            showSection(sectionId);
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[onclick^="showSection"]').forEach(link => {
+            link.style.cursor = 'pointer';
+        });
+    </script>
+</body>
+</html>
